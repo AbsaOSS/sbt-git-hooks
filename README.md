@@ -14,13 +14,13 @@ Sample files are ignored.
 
 In order to add the sbt-git-hooks plugin to your build, add the following line to `project/plugins.sbt`:
 
-``` scala
+``` sbt
 addSbtPlugin("za.co.absa.sbt" % "sbt-git-hooks" % "X.Y.Z")
 ```
 
 Then, optionally, in your `build.sbt` configure the following settings:
 
-```scala
+```sbt
 overwriteGitHookFiles := true 
 gitHookFilesLocation := "project/git_hooks"
 ```
@@ -38,5 +38,3 @@ gitHookFilesLocation := "project/git_hooks"
 
 - Java 8 or higher
 - sbt 1.3.0 or higher
-
-### Excluding files
