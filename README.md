@@ -30,9 +30,11 @@ gitHookFilesLocation := "project/git_hooks"
 
 ### Syncing hook files
 
+To run a sync use `sbt syncGitHooks`.
 
 ### Checking what files would get synced if any
 
+To check which files would get synced and what would happen run `sbt getGitHooksToSync`
 
 ### Requirements
 
