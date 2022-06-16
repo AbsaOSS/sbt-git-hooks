@@ -21,7 +21,7 @@ import sbt.{CopyOptions, IO, Logger}
 import java.io.File
 
 object GitHookFiles {
-  private val git_hooks_folder = ".git/hooks"
+  private val gitHooksFolder = ".git/hooks"
 
   private def getListOfFiles(dir: File):List[File] = {
     val listOfAllFiles = if (dir.exists && dir.isDirectory) {
@@ -37,10 +37,23 @@ object GitHookFiles {
     getListOfFiles(directory).map { f => f.getName -> HookFile(f)}.toMap
   }
 
+  private def validatePath(source: File, target: File)(implicit logger: Logger): Unit = {
+    if (!source.exists()) throw new Exception("Input path does not exist")
+    if (!source.isDirectory) throw new Exception("Input path is not a directory")
+
+    if(!target.exists()) {
+      logger.info("Git hooks folder does not exist. Creating.")
+      target.mkdir()
+    }
+    if(!target.isDirectory) throw new Exception(s"$gitHooksFolder is not a directory")
+  }
+
   private[plugins] def check(rootFile: File, hooksDir: String, overwrite: Boolean)(implicit logger: Logger): Seq[String] = {
     logger.info(s"Checking Git Hooks in source vs .git/hooks. Overwrite is $overwrite")
-    val hooksTargetPath = new File(rootFile, git_hooks_folder)
+    val hooksTargetPath = new File(rootFile, gitHooksFolder)
     val hooksSourcePath = new File(rootFile, hooksDir)
+
+    validatePath(hooksSourcePath, hooksTargetPath)
 
     val targetFiles: Map[String, HookFile] = getMapOfHookFiles(hooksTargetPath)
     val sourceFiles: Map[String, HookFile] = getMapOfHookFiles(hooksSourcePath)
@@ -64,8 +77,10 @@ object GitHookFiles {
 
   private[plugins] def sync(rootFile: File, hooksDir: String, overwrite: Boolean)(implicit logger: Logger): Unit = {
     logger.info(s"Syncing Git Hooks in source with .git/hooks. Overwrite is $overwrite")
-    val hooksTargetPath = new File(rootFile, git_hooks_folder)
+    val hooksTargetPath = new File(rootFile, gitHooksFolder)
     val hooksSourcePath = new File(rootFile, hooksDir)
+
+    validatePath(hooksSourcePath, hooksTargetPath)
 
     val targetFiles: Map[String, HookFile] = getMapOfHookFiles(hooksTargetPath)
     val sourceFiles: Map[String, HookFile] = getMapOfHookFiles(hooksSourcePath)
