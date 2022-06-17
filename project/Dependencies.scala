@@ -13,21 +13,12 @@
  * limitations under the License.
  */
 
-ThisBuild / organization := "za.co.absa.sbt"
+import sbt._
 
-lazy val root = (project in file("."))
-  .enablePlugins(SbtPlugin)
-  .settings(
-    sbtPlugin := true,
-    name := "sbt-git-hooks",
-    scriptedLaunchOpts := { scriptedLaunchOpts.value ++
-      Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
-    },
-    scriptedBufferLog := false,
-    pluginCrossBuild / sbtVersion := {
-      scalaBinaryVersion.value match {
-        case "2.12" => "1.3.0" // set minimum sbt version
-      }
-    }
+object Dependencies {
+  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.9" % Test
+
+  lazy val dependencies: Seq[ModuleID] = Seq(
+    scalaTest
   )
-
+}

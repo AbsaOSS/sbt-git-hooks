@@ -38,11 +38,11 @@ object GitHookFiles {
   }
 
   private def validatePath(source: File, target: File)(implicit logger: Logger): Unit = {
-    if (!source.exists()) throw new Exception("Input path does not exist")
-    if (!source.isDirectory) throw new Exception("Input path is not a directory")
+    if (!source.exists()) throw new Exception("Source path does not exist")
+    if (!source.isDirectory) throw new Exception("Source path is not a directory")
 
     if(!target.exists()) {
-      logger.info("Git hooks folder does not exist. Creating.")
+      logger.info(s"Git hooks folder does not exist. Creating $gitHooksFolder.")
       target.mkdir()
     }
     if(!target.isDirectory) throw new Exception(s"$gitHooksFolder is not a directory")

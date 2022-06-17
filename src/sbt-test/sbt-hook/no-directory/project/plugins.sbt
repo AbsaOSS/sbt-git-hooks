@@ -4,6 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -13,21 +14,9 @@
  * limitations under the License.
  */
 
-ThisBuild / organization := "za.co.absa.sbt"
 
-lazy val root = (project in file("."))
-  .enablePlugins(SbtPlugin)
-  .settings(
-    sbtPlugin := true,
-    name := "sbt-git-hooks",
-    scriptedLaunchOpts := { scriptedLaunchOpts.value ++
-      Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
-    },
-    scriptedBufferLog := false,
-    pluginCrossBuild / sbtVersion := {
-      scalaBinaryVersion.value match {
-        case "2.12" => "1.3.0" // set minimum sbt version
-      }
-    }
-  )
-
+sys.props.get("plugin.version") match {
+  case Some(x) => addSbtPlugin("za.co.absa.sbt" % "sbt-git-hooks" % x)
+  case _ => sys.error("""|The system property 'plugin.version' is not defined.
+                         |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
+}

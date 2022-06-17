@@ -4,6 +4,7 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -13,21 +14,8 @@
  * limitations under the License.
  */
 
-ThisBuild / organization := "za.co.absa.sbt"
+addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.1.2")
 
-lazy val root = (project in file("."))
-  .enablePlugins(SbtPlugin)
-  .settings(
-    sbtPlugin := true,
-    name := "sbt-git-hooks",
-    scriptedLaunchOpts := { scriptedLaunchOpts.value ++
-      Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
-    },
-    scriptedBufferLog := false,
-    pluginCrossBuild / sbtVersion := {
-      scalaBinaryVersion.value match {
-        case "2.12" => "1.3.0" // set minimum sbt version
-      }
-    }
-  )
+addSbtPlugin("com.github.sbt" % "sbt-release" % "1.1.0")
 
+addSbtPlugin("de.heikoseeberger" % "sbt-header" % "5.7.0")
