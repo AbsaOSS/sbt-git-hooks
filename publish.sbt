@@ -14,7 +14,7 @@
  */
 
 ThisBuild / organizationName := "ABSA Group Limited"
-ThisBuild / startYear := Some(2022)
+ThisBuild / organizationHomepage := Some(url("https://www.absa.africa"))
 ThisBuild / scmInfo := Some(
   ScmInfo(
     browseUrl = url("https://github.com/AbsaOSS/sbt-git-hooks/tree/master"),

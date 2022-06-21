@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    name: SBT Test
+    name: SBT Scripted Test
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
