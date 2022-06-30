@@ -26,6 +26,7 @@ object GitHooksPlugin extends sbt.AutoPlugin {
   object autoImport {
     val overwriteGitHookFiles = settingKey[Boolean]("Should hooks be overwritten if checksums don't match")
     val gitHookFilesLocation = settingKey[String]("Location of source git hook files")
+    val gitHookFilesTarget = settingKey[String]("Target directory for git hook files")
 
     val getGitHooksToSync = taskKey[Seq[String]]("Checks the git hooks files are up to date")
     val syncGitHooks = taskKey[Unit]("Syncs the git hook files")
@@ -36,15 +37,26 @@ object GitHooksPlugin extends sbt.AutoPlugin {
   override lazy val projectSettings: Seq[Def.Setting[_]] = Seq(
     overwriteGitHookFiles := false,
     gitHookFilesLocation := "project/git_hooks",
+    gitHookFilesTarget := ".git/hooks",
 
     getGitHooksToSync := {
       GitHookFiles
-        .check(baseDirectory.value, gitHookFilesLocation.value, overwriteGitHookFiles.value)(streams.value.log)
+        .check(
+          baseDirectory.value,
+          gitHookFilesLocation.value,
+          overwriteGitHookFiles.value,
+          gitHookFilesTarget.value
+        )(streams.value.log)
     },
 
     syncGitHooks := {
       GitHookFiles
-        .sync(baseDirectory.value, gitHookFilesLocation.value, overwriteGitHookFiles.value)(streams.value.log)
+        .sync(
+          baseDirectory.value,
+          gitHookFilesLocation.value,
+          overwriteGitHookFiles.value,
+          gitHookFilesTarget.value
+        )(streams.value.log)
     }
   )
 }

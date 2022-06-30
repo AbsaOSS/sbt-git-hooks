@@ -21,8 +21,6 @@ import sbt.{CopyOptions, IO, Logger}
 import java.io.File
 
 object GitHookFiles {
-  private val gitHooksFolder = ".git/hooks"
-
   private def getListOfFiles(dir: File):List[File] = {
     val listOfAllFiles = if (dir.exists && dir.isDirectory) {
       dir.listFiles.filter(_.isFile).toList
@@ -42,13 +40,14 @@ object GitHookFiles {
     if (!source.isDirectory) throw new Exception(s"Source path '$source' is not a directory")
 
     if(!target.exists()) {
-      logger.info(s"Git hooks folder does not exist. Creating $gitHooksFolder.")
+      logger.info(s"Git hooks folder does not exist. Creating $target.")
       target.mkdir()
     }
-    if(!target.isDirectory) throw new Exception(s"$gitHooksFolder is not a directory")
+    if(!target.isDirectory) throw new Exception(s"$target is not a directory")
   }
 
-  private[plugins] def check(rootFile: File, hooksDir: String, overwrite: Boolean)(implicit logger: Logger): Seq[String] = {
+  private[plugins] def check(rootFile: File, hooksDir: String, overwrite: Boolean, gitHooksFolder: String)
+                            (implicit logger: Logger): Seq[String] = {
     logger.info(s"Checking Git Hooks in source vs .git/hooks. Overwrite is $overwrite")
     val hooksTargetPath = new File(rootFile, gitHooksFolder)
     val hooksSourcePath = new File(rootFile, hooksDir)
@@ -75,7 +74,8 @@ object GitHookFiles {
     filesToCopy.keys.toSeq
   }
 
-  private[plugins] def sync(rootFile: File, hooksDir: String, overwrite: Boolean)(implicit logger: Logger): Unit = {
+  private[plugins] def sync(rootFile: File, hooksDir: String, overwrite: Boolean, gitHooksFolder: String)
+                           (implicit logger: Logger): Unit = {
     logger.info(s"Syncing Git Hooks in source with .git/hooks. Overwrite is $overwrite")
     val hooksTargetPath = new File(rootFile, gitHooksFolder)
     val hooksSourcePath = new File(rootFile, hooksDir)
