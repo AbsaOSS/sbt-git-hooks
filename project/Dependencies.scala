@@ -16,7 +16,7 @@
 import sbt._
 
 object Dependencies {
-  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.9" % Test
+  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.12" % Test
 
   lazy val dependencies: Seq[ModuleID] = Seq(
     scalaTest

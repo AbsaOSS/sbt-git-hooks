@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import Dependencies._
+
 ThisBuild / organization := "za.co.absa.sbt"
 
 lazy val root = (project in file("."))
@@ -20,6 +22,7 @@ lazy val root = (project in file("."))
   .settings(
     sbtPlugin := true,
     name := "sbt-git-hooks",
+    libraryDependencies ++= dependencies,
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
       Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
     },

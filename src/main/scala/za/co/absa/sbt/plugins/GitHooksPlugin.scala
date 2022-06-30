@@ -31,7 +31,7 @@ object GitHooksPlugin extends sbt.AutoPlugin {
     val syncGitHooks = taskKey[Unit]("Syncs the git hook files")
   }
 
-  import autoImport.*
+  import autoImport._
 
   override lazy val projectSettings: Seq[Def.Setting[_]] = Seq(
     overwriteGitHookFiles := false,
