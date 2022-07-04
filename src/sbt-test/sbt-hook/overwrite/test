@@ -1,0 +1,3 @@
+> syncGitHooks
+$ exists .git_like/hooks/moved-hook
+$ must-mirror .git_like/hooks/some-random-hook project/git_hooks/some-random-hook

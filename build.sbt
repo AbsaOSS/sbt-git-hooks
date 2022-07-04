@@ -13,21 +13,16 @@
  * limitations under the License.
  */
 
-ThisBuild / version := "0.1.0-SNAPSHOT"
+import Dependencies._
+
 ThisBuild / organization := "za.co.absa.sbt"
-ThisBuild / organizationName := "za.co.absa"
-
-ThisBuild / organizationName := "ABSA Group Limited"
-ThisBuild / startYear := Some(2022)
-ThisBuild / licenses += "Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.txt")
-
-Global / serverConnectionType := ConnectionType.Local
 
 lazy val root = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(
     sbtPlugin := true,
     name := "sbt-git-hooks",
+    libraryDependencies ++= dependencies,
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
       Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
     },
@@ -38,4 +33,5 @@ lazy val root = (project in file("."))
       }
     }
   )
+
 

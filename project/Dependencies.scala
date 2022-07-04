@@ -4,7 +4,6 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
@@ -14,9 +13,12 @@
  * limitations under the License.
  */
 
+import sbt._
 
-sys.props.get("plugin.version") match {
-  case Some(x) => addSbtPlugin("za.co.absa.sbt" % "sbt-git-hooks" % x)
-  case _ => sys.error("""|The system property 'plugin.version' is not defined.
-                         |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
+object Dependencies {
+  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.12" % Test
+
+  lazy val dependencies: Seq[ModuleID] = Seq(
+    scalaTest
+  )
 }

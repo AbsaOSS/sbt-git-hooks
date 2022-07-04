@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-
-sys.props.get("plugin.version") match {
-  case Some(x) => addSbtPlugin("za.co.absa.sbt" % "sbt-git-hooks" % x)
-  case _ => sys.error("""|The system property 'plugin.version' is not defined.
-                         |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
-}
+lazy val root = (project in file("."))
+  .settings(
+    scalaVersion := "2.12.12",
+    version := "0.1",
+    overwriteGitHookFiles := true,
+    gitHookFilesTarget := ".git_like/hooks"
+  )

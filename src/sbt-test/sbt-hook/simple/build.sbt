@@ -18,4 +18,5 @@ lazy val root = (project in file("."))
   .settings(
     scalaVersion := "2.12.12",
     version := "0.1",
+    gitHookFilesTarget := ".git_like/hooks"
   )

@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
-
-sys.props.get("plugin.version") match {
-  case Some(x) => addSbtPlugin("za.co.absa.sbt" % "sbt-git-hooks" % x)
-  case _ => sys.error("""|The system property 'plugin.version' is not defined.
-                         |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
+object Main extends App {
+  println("hello David")
 }

@@ -1,2 +1,2 @@
 > syncGitHooks
-$ exists .git/hooks/moved-hook
+$ exists .git_like/hooks/moved-hook
