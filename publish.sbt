@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+ThisBuild / sonatypeProfileName := "za.co.absa"
+
 ThisBuild / organizationName := "ABSA Group Limited"
 ThisBuild / organizationHomepage := Some(url("https://www.absa.africa"))
 ThisBuild / scmInfo := Some(
@@ -29,6 +31,12 @@ ThisBuild / developers := List(
     name  = "Sasa Zejnilovic",
     email = "sasa.zejnilovic@absa.africa",
     url   = url("https://github.com/Zejnilovic")
+  ),
+  Developer(
+    id    = "lsulak",
+    name  = "Ladislav Sulak",
+    email = "ladislav.sulak@absa.africa",
+    url   = url("https://github.com/lsulak")
   )
 )
 
