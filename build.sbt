@@ -15,8 +15,6 @@
 
 import Dependencies._
 
-ThisBuild / organization := "za.co.absa.sbt"
-
 lazy val root = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(
