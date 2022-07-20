@@ -15,7 +15,6 @@
 
 ThisBuild / sonatypeProfileName := "za.co.absa"
 
-ThisBuild / organization := "za.co.absa.sbt"
 ThisBuild / organizationName := "ABSA Group Limited"
 ThisBuild / organizationHomepage := Some(url("https://www.absa.africa"))
 ThisBuild / scmInfo := Some(
