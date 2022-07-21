@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-ThisBuild / sonatypeProfileName := "za.co.absa"
-
 ThisBuild / organizationName := "ABSA Group Limited"
 ThisBuild / organizationHomepage := Some(url("https://www.absa.africa"))
 ThisBuild / scmInfo := Some(

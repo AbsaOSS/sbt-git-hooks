@@ -22,6 +22,7 @@ lazy val root = (project in file("."))
   .settings(
     sbtPlugin := true,
     name := "sbt-git-hooks",
+    sonatypeProfileName := "za.co.absa",
     libraryDependencies ++= dependencies,
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
       Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
