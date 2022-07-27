@@ -1,6 +1,7 @@
 # sbt-git-hooks
 
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+[![Release](https://github.com/AbsaOSS/sbt-git-hooks/actions/workflows/release.yml/badge.svg)](https://github.com/AbsaOSS/sbt-git-hooks/actions/workflows/release.yml)
 
 sbt-git-hooks is an [sbt](http://www.scala-sbt.org) plugin for maintaining git hooks as part of your code.
 
@@ -40,3 +41,7 @@ To check which files would get synced and what would happen run `sbt getGitHooks
 
 - Java 8 or higher
 - sbt 1.3.0 or higher
+
+## How to Release
+
+Please see [this file](RELEASE.md) for more details.
