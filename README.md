@@ -2,7 +2,6 @@
 
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Release](https://github.com/AbsaOSS/sbt-git-hooks/actions/workflows/release.yml/badge.svg)](https://github.com/AbsaOSS/sbt-git-hooks/actions/workflows/release.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/za.co.absa.sbt/sbt-git-hooks_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/za.co.absa.sbt/sbt-git-hooks_2.12)
 
 sbt-git-hooks is an [sbt](http://www.scala-sbt.org) plugin for maintaining git hooks as part of your code.
 
