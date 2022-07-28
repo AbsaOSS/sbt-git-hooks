@@ -17,6 +17,8 @@ import Dependencies._
 
 ThisBuild / organization := "za.co.absa.sbt"
 
+ThisBuild / versionScheme := Some("early-semver")
+
 lazy val root = (project in file("."))
   .enablePlugins(SbtPlugin)
   .settings(

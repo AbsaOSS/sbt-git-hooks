@@ -22,7 +22,6 @@ ThisBuild / scmInfo := Some(
     devConnection = "scm:git:ssh://github.com/AbsaOSS/sbt-git-hooks.git"
   )
 )
-ThisBuild / versionScheme := Some("early-semver")
 
 ThisBuild / developers := List(
   Developer(
